@@ -43,7 +43,11 @@ app.post("/user/save", (req, res) => {
       arr.push(body);
       const txt = JSON.stringify(arr);
       fs.writeFile(__dirname + "/data.json", txt, (err) => {
-        res.send("Data saved successfully");
+        if (!err) {
+          res.send("Data saved successfully");
+        } else {
+          res.send("data can't saved");
+        }
       });
     }
   });
