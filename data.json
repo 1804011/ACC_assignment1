@@ -30,8 +30,5 @@
     "address": "chittagong",
     "photoUrl": "http://murad.com"
   },
-  {
-    "id": 5,
-    "name": "shaibal barua"
-  }
+  { "id": 5, "name": "shaibal barua" }
 ]

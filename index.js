@@ -7,20 +7,21 @@ const port = process.env.PORT || 5000;
 app.use(cors());
 app.use(express.json());
 app.get("/user/random", (req, res) => {
-  fs.readFile("./data.json", (err, data) => {
+  fs.readFile("data.json", (err, data) => {
     if (err) {
       res.send("There is error");
     } else {
       let arr = JSON.parse(data);
       let sz = arr.length;
       const random = Math.floor(Math.random() * sz);
+      console.log(random);
       res.send(arr[random]);
       //   res.end();
     }
   });
 });
 app.get("/user/all", (req, res) => {
-  fs.readFile("./data.json", (err, data) => {
+  fs.readFile("data.json", (err, data) => {
     if (err) {
       res.send("There is error");
     } else {
@@ -35,13 +36,13 @@ app.get("/user/all", (req, res) => {
 });
 app.post("/user/save", (req, res) => {
   const { body } = req;
-  fs.readFile("./data.json", (err, data) => {
+  fs.readFile("data.json", (err, data) => {
     if (err) {
     } else {
       const arr = JSON.parse(data);
       arr.push(body);
       const txt = JSON.stringify(arr);
-      fs.writeFile("./data.json", txt, (err) => {
+      fs.writeFile("data.json", txt, (err) => {
         res.send("Data saved successfully");
       });
     }
@@ -50,7 +51,7 @@ app.post("/user/save", (req, res) => {
 app.patch("/user/update/:id", (req, res) => {
   const { id } = req?.params;
   const { body } = req;
-  fs.readFile("./data.json", (err, data) => {
+  fs.readFile("data.json", (err, data) => {
     if (!err) {
       const arr = JSON.parse(data);
       arr.map((user, idx) => {
@@ -59,7 +60,7 @@ app.patch("/user/update/:id", (req, res) => {
         }
       });
       const txt = JSON.stringify(arr);
-      fs.writeFile("./data.json", txt, (err) => {
+      fs.writeFile("data.json", txt, (err) => {
         if (!err) {
           res.send("update a user successfully");
         }
@@ -68,7 +69,7 @@ app.patch("/user/update/:id", (req, res) => {
   });
 });
 app.patch("/user/bulk", (req, res) => {
-  fs.readFile("./data.json", (err, data) => {
+  fs.readFile("data.json", (err, data) => {
     if (!err) {
       const arr = JSON.parse(data);
       const users = req?.body?.ids;
@@ -81,7 +82,7 @@ app.patch("/user/bulk", (req, res) => {
         }
       }
       const txt = JSON.stringify(arr);
-      fs.writeFile("./data.json", txt, (err) => {
+      fs.writeFile("data.json", txt, (err) => {
         if (!err) {
           res.send("multiple users updated successfully");
         }
@@ -91,12 +92,12 @@ app.patch("/user/bulk", (req, res) => {
 });
 app.delete("/user/delete/:id", (req, res) => {
   const { id } = req?.params;
-  fs.readFile("./data.json", (err, data) => {
+  fs.readFile("data.json", (err, data) => {
     if (!err) {
       const arr = JSON.parse(data);
       const arr2 = arr.filter((user) => user?.id != id);
       const txt = JSON.stringify(arr2);
-      fs.writeFile("./data.json", txt, (err) => {
+      fs.writeFile("data.json", txt, (err) => {
         if (!err) {
           res.send("user deleted successfully");
         }
