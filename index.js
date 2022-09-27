@@ -38,10 +38,13 @@ app.post("/user/save", (req, res) => {
   const { body } = req;
   fs.readFile(__dirname + "/data.json", (err, data) => {
     if (err) {
+      res.send("Error");
     } else {
       const arr = JSON.parse(data);
       arr.push(body);
+
       const txt = JSON.stringify(arr);
+      res.send(txt);
       fs.writeFile(__dirname + "/data.json", txt, (err) => {
         if (!err) {
           res.send("Data saved successfully");
