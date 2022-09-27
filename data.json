@@ -1,0 +1,37 @@
+[
+  {
+    "id": 1,
+    "name": "Anirban Barua",
+    "contact": 1234444,
+    "gender": "male",
+    "address": "chittagong",
+    "photoUrl": "http://anirban.com"
+  },
+  {
+    "id": 2,
+    "gender": "male",
+    "name": "Tanvir",
+    "contact": 1236,
+    "address": "Barisal",
+    "photoUrl": "http://tanvir.com"
+  },
+  {
+    "id": 4,
+    "gender": "male",
+    "name": "Raihan",
+    "contact": 12349900,
+    "address": "chittagong",
+    "photoUrl": "http://raihan.com"
+  },
+  {
+    "id": 6,
+    "name": "tanvir murad",
+    "gender": "male",
+    "address": "chittagong",
+    "photoUrl": "http://murad.com"
+  },
+  {
+    "id": 5,
+    "name": "shaibal barua"
+  }
+]
