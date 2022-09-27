@@ -21,7 +21,8 @@ app.get("/user/random", (req, res) => {
   });
 });
 app.get("/user/all", (req, res) => {
-  fs.readFile("data.json", (err, data) => {
+  // console.log(__dirname);
+  fs.readFile(__dirname + "/data.json", (err, data) => {
     if (err) {
       res.send("There is error");
     } else {
