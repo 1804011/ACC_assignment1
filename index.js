@@ -34,7 +34,7 @@ app.get("/user/all", (req, res) => {
     }
   });
 });
-app.post("/user/save", (req, res) => {
+app.post("/user/save", async (req, res) => {
   const { body } = req;
   fs.readFile(__dirname + "/data.json", (err, data) => {
     if (err) {
@@ -49,7 +49,7 @@ app.post("/user/save", (req, res) => {
         if (!err) {
           res.send("Data saved successfully");
         } else {
-          res.send("data can't saved");
+          res.send(JSON.stringify(err));
         }
       });
     }
