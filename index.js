@@ -9,7 +9,7 @@ app.use(express.json());
 app.get("/user/random", (req, res) => {
   fs.readFile("./data.json", (err, data) => {
     if (err) {
-      res.send("Ther is error");
+      res.send("There is error");
     } else {
       let arr = JSON.parse(data);
       let sz = arr.length;
@@ -22,6 +22,7 @@ app.get("/user/random", (req, res) => {
 app.get("/user/all", (req, res) => {
   fs.readFile("./data.json", (err, data) => {
     if (err) {
+      res.send("There is error");
     } else {
       let { limit } = req?.query;
       const arr = JSON.parse(data);
